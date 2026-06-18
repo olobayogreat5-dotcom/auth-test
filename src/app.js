@@ -1,0 +1,13 @@
+const express = require('express');
+const authRoutes = require('./routes/auth');
+const errorHandler = require('./middleware/errorHandler');
+const requestLogger = require('./middleware/requestLogger');
+
+const app = express();
+
+app.use(requestLogger);          // ← logs every request, BEFORE routes
+app.use(express.json());
+app.use('/api/auth', authRoutes);
+app.use(errorHandler);           // ← error handler stays LAST
+
+module.exports = app;
