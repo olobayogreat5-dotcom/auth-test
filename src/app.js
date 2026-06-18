@@ -5,9 +5,9 @@ const requestLogger = require('./middleware/requestLogger');
 
 const app = express();
 
-app.use(requestLogger);          // ← logs every request, BEFORE routes
+app.use(requestLogger);         
 app.use(express.json());
 app.use('/api/auth', authRoutes);
-app.use(errorHandler);           // ← error handler stays LAST
+app.use(errorHandler);      
 
 module.exports = app;
